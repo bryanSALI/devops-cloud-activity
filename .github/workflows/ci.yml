@@ -1,0 +1,21 @@
+name: DevOps CI Check
+
+on:
+  push:
+    branches:
+      - main
+      - feature-system-status
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  check-system-status:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Check System Status Feature
+        run: |
+          grep -i "System Status" index.html
